@@ -1,0 +1,197 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: 100vh;
+    width: 100vw;
+}
+
+/********************** HEADING CONTAINER ****************************/
+
+.heading-container {
+    height: 6vh;
+    background-color: rgb(25, 193, 73);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h2 {
+    color: rgb(233, 242, 233);
+}
+
+/********************** MENU CONTAINER ****************************/
+
+.menu-container {
+    height: 5vh;
+    background-color: rgb(237, 241, 241);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.font-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+}
+
+.dropdown {
+    border-radius: 2rem;
+    width: 50%;
+    cursor: pointer;
+}
+
+.color-container {
+    display: flex;
+    gap: 10px;
+}
+
+#favcolor {
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.BIU-container {
+    display: flex;
+    gap: 10px;
+    font-size: larger;
+}
+
+.bold,
+.italic,
+.underline {
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.align-container {
+    display: flex;
+    gap: 10px;
+
+}
+
+.left,
+.center,
+.right {
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+
+/********************** INFORMATION CONTAINER ****************************/
+
+.info-container {
+    height: 5vh;
+    background-color: rgb(190, 193, 194);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    padding-left: 25px;
+}
+
+.box-info-cont {
+    width: 6rem;
+    border-radius: 2rem;
+    border: 1px solid black;
+    height: 20px;
+}
+
+.formula-cont {
+    width: 77rem;
+    height: 20px;
+    border-radius: 2rem;
+    border: 1px solid black;
+}
+
+/********************** GRID CONTAINER ****************************/
+
+
+.grid-container {
+    border: 1px solid black;
+    height: 79vh;
+    width: 100vw;
+    position: relative;
+    overflow: auto;
+}
+
+.top-left-corner {
+    position: absolute;
+    background-color: rgb(160, 120, 120);
+    height: 5vh;
+    width: 3vw;
+}
+
+.top-right-row {
+    position: absolute;
+    left: 3vw;
+    background-color: rgb(190, 193, 194);
+    height: 5vh;
+    display: flex;
+    gap: 1px;
+    align-items: center;
+}
+
+.col {
+    height: 30px;
+    width: 120px;
+    background-color: rgb(165, 148, 148);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left-column {
+    position: absolute;
+    top: 5vh;
+    background-color: rgb(190, 193, 194);
+    width: 3vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.row{
+    height: 30px;
+    background-color: rgb(165, 148, 148);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.grid {
+    position: absolute;
+    background-color: white;
+    height: 74vh;
+    width: 97vw;
+    top: 21vh;
+    left: 3vw;
+}
+
+/********************** SHEET CONTAINER ****************************/
+
+.sheet-container {
+    display: flex;
+    background-color: rgb(190, 193, 194);
+    height: 5vh;
+    align-items: center;
+    gap: 15px;
+    padding-left: 5px;
+}
+
+.add-btn-cont{
+    border: 1px solid black;
+    border-radius: 1rem;
+    font-size: larger;
+    cursor: pointer;
+}
+
+.active-sheet{
+    cursor: pointer;
+}
+
+
