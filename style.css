@@ -131,14 +131,13 @@ h2 {
     background-color: rgb(190, 193, 194);
     height: 5vh;
     display: flex;
-    gap: 1px;
     align-items: center;
 }
 
 .col {
     height: 30px;
     width: 120px;
-    background-color: rgb(165, 148, 148);
+    border: 1px solid;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -151,12 +150,10 @@ h2 {
     width: 3vw;
     display: flex;
     flex-direction: column;
-    gap: 1px;
 }
 
 .row{
     height: 30px;
-    background-color: rgb(165, 148, 148);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -166,10 +163,9 @@ h2 {
 .grid {
     position: absolute;
     background-color: white;
-    height: 74vh;
-    width: 97vw;
-    top: 21vh;
+    top: 5vh;
     left: 3vw;
+    border: 1px solid;
 }
 
 /********************** SHEET CONTAINER ****************************/
