@@ -127,6 +127,7 @@ h2 {
     background-color: #ebe3e3;
     height: 5vh;
     width: 3vw;
+    z-index: 1;
 }
 
 .top-right-row {
@@ -136,6 +137,7 @@ h2 {
     height: 5vh;
     display: flex;
     align-items: center;
+    z-index: 1;
 }
 
 .col {
