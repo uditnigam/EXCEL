@@ -22,7 +22,7 @@ str = '';
 for (let i = 0; i < 100; i++) {
     str += `<div class="row">`
     for (let j = 0; j < 26; j++) {
-        str += `<div class="col"></div>`
+        str += `<div class="col" contentEditable="true"></div>`
     }
     str +=`</div>`
 };
