@@ -98,18 +98,22 @@ h2 {
     padding-left: 25px;
 }
 
-.box-info-cont {
-    width: 6rem;
+.address-bar {
+    width: 3rem;
+    outline: none;
+    border: none;
     border-radius: 2rem;
-    border: 1px solid black;
     height: 20px;
+    padding-left: 1rem;
 }
 
 .formula-cont {
     width: 77rem;
     height: 20px;
     border-radius: 2rem;
-    border: 1px solid black;
+    outline-color: rgb(121, 91, 231);
+    border: none;
+    padding-left: 10px;
 }
 
 /********************** GRID CONTAINER ****************************/
@@ -123,9 +127,11 @@ h2 {
 }
 
 .top-left-corner {
-    position: fixed;
-    background-color: #ebe3e3;
-    height: 5vh;
+    position: absolute;
+    background-color: #f7eeee;
+    border-bottom: 1px solid;
+    border-color: lightgrey;
+    height: 30px;
     width: 3vw;
     z-index: 1;
 }
@@ -133,8 +139,9 @@ h2 {
 .top-right-row {
     position:absolute;
     left: 3vw;
-    background-color: rgb(190, 193, 194);
-    height: 5vh;
+    height: 30px;
+    border-bottom: 1px solid;
+    border-color: lightgrey;
     display: flex;
     align-items: center;
     z-index: 1;
@@ -144,18 +151,18 @@ h2 {
     height: 30px;
     width: 120px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    border: 1px solid;
+    border-left: 1px solid;
+    border-color: lightgrey;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     outline-color: rgb(121, 91, 231);
-    border-style: ridge;
 }
 
 .left-column {
-    position: sticky;
-    top: 5vh;
+    position: absolute;
+    top: 30px;
     width: 3vw;
     display: flex;
     flex-direction: column;
@@ -163,18 +170,18 @@ h2 {
 
 .row{
     height: 30px;
-    border: 1px solid;
+    border-bottom: 1px solid;
+    border-color: lightgrey;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-style: ridge;
+    /* border-style: ridge; */
 }
 
 
 .grid {
     position: absolute;
-    /* background-color: white; */
-    top: 5vh;
+    top: 30px;
     left: 3vw;
 }
 
