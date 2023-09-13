@@ -28,14 +28,29 @@ h2 {
     background-color: rgb(237, 241, 241);
     display: flex;
     align-items: center;
-    gap: 15px;
+    justify-content: center;
+}
+
+.menu-bar{
+    display: flex;
+    border-radius: 2rem;
+    background-color: #c0e0ea;
+    width: 97%;;
+    width: 97%;
+    gap:1rem;
+}
+
+.separator-cont{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .font-container {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 15px;
+    gap: 2px;
+    padding-left: 25px;
 }
 
 .dropdown {
@@ -46,7 +61,8 @@ h2 {
 
 .color-container {
     display: flex;
-    gap: 10px;
+    gap: 2px;
+    align-items: center;
 }
 
 #favcolor {
@@ -61,28 +77,45 @@ h2 {
 
 .BIU-container {
     display: flex;
-    gap: 10px;
-    font-size: larger;
+    gap: 2px;
 }
 
 .bold,
 .italic,
 .underline {
-    cursor: pointer;
+    background-color: #c0e0ea;
+    width: 97%;;
+    height: 2rem;
+    width: 2rem;
     font-size: 1rem;
-    border: none;
 }
 
 .align-container {
     display: flex;
-    gap: 10px;
+    gap: 2px;
 }
 
 .left,
 .center,
 .right {
-    cursor: pointer;
+    background-color: #c0e0ea;
+    width: 97%;;
+    height: 2rem;
+    width: 2rem;
     font-size: 1rem;
+}
+
+.bold:hover,
+.italic:hover,
+.underline:hover,
+.left:hover,
+.center:hover,
+.right:hover {
+    background-color: lightgray; 
+}
+
+.activeBtn{
+    background-color: #b1b1f7;
 }
 
 
@@ -108,7 +141,7 @@ h2 {
 }
 
 .formula-cont {
-    width: 77rem;
+    width: 1273px;
     height: 20px;
     border-radius: 2rem;
     outline-color: rgb(121, 91, 231);
@@ -150,7 +183,6 @@ h2 {
 .col {
     height: 30px;
     width: 120px;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
     border-left: 1px solid;
     border-color: lightgrey;
     display: flex;
@@ -158,6 +190,11 @@ h2 {
     justify-content: center;
     overflow: hidden;
     outline-color: rgb(121, 91, 231);
+}
+
+.grid .col{
+    display: flex;
+    justify-content: flex-start;
 }
 
 .left-column {
@@ -199,6 +236,10 @@ h2 {
 .add-btn-cont{
     font-size: larger;
     cursor: pointer;
+}
+
+.add-btn-cont :hover{
+    background-color: aqua;
 }
 
 .active-sheet{
