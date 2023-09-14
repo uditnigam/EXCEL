@@ -55,6 +55,7 @@ leftBtn.addEventListener("click", (e) => {
     } else {
         // add the class
         leftBtn.classList.add("activeBtn");
+
     }
 });
 //CENTER BUTTON

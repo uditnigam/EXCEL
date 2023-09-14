@@ -84,7 +84,6 @@ h2 {
 .italic,
 .underline {
     background-color: #c0e0ea;
-    width: 97%;;
     height: 2rem;
     width: 2rem;
     font-size: 1rem;
@@ -111,11 +110,11 @@ h2 {
 .left:hover,
 .center:hover,
 .right:hover {
-    background-color: lightgray; 
+    background-color: rgb(182, 178, 178);
 }
 
 .activeBtn{
-    background-color: #b1b1f7;
+    background-color: rgb(139, 194, 229) !important;
 }
 
 
@@ -234,12 +233,15 @@ h2 {
 }
 
 .add-btn-cont{
-    font-size: larger;
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
     cursor: pointer;
 }
 
 .add-btn-cont :hover{
-    background-color: aqua;
+    background-color: rgb(0, 242, 255);
+    border-radius: 5px;
 }
 
 .active-sheet{
