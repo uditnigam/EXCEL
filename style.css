@@ -104,19 +104,13 @@ h2 {
     font-size: 1rem;
 }
 
-.bold:hover,
-.italic:hover,
-.underline:hover,
-.left:hover,
-.center:hover,
-.right:hover {
-    background-color: rgb(182, 178, 178);
-}
-
 .activeBtn{
-    background-color: rgb(139, 194, 229) !important;
+    background-color: rgb(139, 194, 229);
 }
 
+.menu-cont:hover{
+    background-color: rgb(139, 194, 229);
+}
 
 /********************** INFORMATION CONTAINER ****************************/
 
