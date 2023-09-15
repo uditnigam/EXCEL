@@ -5,10 +5,14 @@ let allCells = document.querySelectorAll(".grid .col");
 let addressBar = document.querySelector(".address-bar");
 
 //MENU CONTAINER
+let fontStyle = document.querySelector(".font-style");
+let fontSize = document.querySelector(".font-size");
 let fontColor = document.querySelector(".font-color");
+let backgroundColor = document.querySelector(".background-color");
 let boldBtn = document.querySelector(".bold");
 let italicBtn = document.querySelector(".italic");
 let underlineBtn = document.querySelector(".underline");
+let alignContainer = document.querySelectorAll(".align-container>*");
 let leftBtn = document.querySelector(".left");
 let centerBtn = document.querySelector(".center");
 let rightBtn = document.querySelector(".right");
@@ -22,6 +26,26 @@ function addressCidRid() {
     let cell = document.querySelector(`[cid="${cid}"][rid="${rid}"]`);
     return cell;
 }
+//FONT STYLE
+fontStyle.addEventListener("change", (e) =>{
+    let cell = addressCidRid();
+    cell.style.fontFamily = e.target.value;
+});
+//FONT SIZE
+fontSize.addEventListener("change", (e) =>{
+    let cell = addressCidRid();
+    cell.style.fontSize = e.target.value;
+});
+//FONT COLOR
+fontColor.addEventListener("change", (e) =>{
+    let cell = addressCidRid();
+    cell.style.color = e.target.value;
+});
+//BACKGROUND COLOR
+backgroundColor.addEventListener("change", (e) =>{
+    let cell = addressCidRid();
+    cell.style.backgroundColor = e.target.value;
+});
 //BOLD BUTTON
 boldBtn.addEventListener("click", (e) => {
     let activeBtn = boldBtn.classList.contains("activeBtn");
@@ -66,45 +90,31 @@ underlineBtn.addEventListener("click", (e) => {
 });
 //LEFT BUTTON
 leftBtn.addEventListener("click", (e) => {
-    let activeBtn = leftBtn.classList.contains("activeBtn");
     let cell = addressCidRid();
-    if (activeBtn) {
-        // remove the class
-        leftBtn.classList.remove("activeBtn");
-        cell.style.textAlign = "none";
-    } else {
-        // add the class
-        leftBtn.classList.add("activeBtn");
-        cell.style.textAlign = "left";
+    for (let i = 0; i < alignContainer.length; i++) {
+        alignContainer[i].classList.remove("activeBtn");
     }
+    leftBtn.classList.add("activeBtn");
+    cell.style.textAlign = "left";
 });
 //CENTER BUTTON
 centerBtn.addEventListener("click", (e) => {
-    let activeBtn = centerBtn.classList.contains("activeBtn");
     let cell = addressCidRid();
-    if (activeBtn) {
-        // remove the class
-        centerBtn.classList.remove("activeBtn");
-        cell.style.textAlign = "none";
-    } else {
-        // add the class
-        centerBtn.classList.add("activeBtn");
-        cell.style.textAlign = "center";
+    for (let i = 0; i < alignContainer.length; i++) {
+        alignContainer[i].classList.remove("activeBtn");
     }
+    centerBtn.classList.add("activeBtn");
+    cell.style.textAlign = "center";
+
 });
 //RIGHT BUTTON
 rightBtn.addEventListener("click", (e) => {
-    let activeBtn = rightBtn.classList.contains("activeBtn");
     let cell = addressCidRid();
-    if (activeBtn) {
-        // remove the class
-        rightBtn.classList.remove("activeBtn");
-        cell.style.textAlign = "none";
-    } else {
-        // add the class
-        rightBtn.classList.add("activeBtn");
-        cell.style.textAlign = "right";
+    for (let i = 0; i < alignContainer.length; i++) {
+        alignContainer[i].classList.remove("activeBtn");
     }
+    rightBtn.classList.add("activeBtn");
+    cell.style.textAlign = "right";
 });
 
 /************************** INFO CONTAINER ************************************/

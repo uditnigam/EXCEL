@@ -157,7 +157,7 @@ h2 {
     background-color: #f7eeee;
     border-bottom: 1px solid;
     border-color: lightgrey;
-    height: 30px;
+    height: 25px;
     width: 3vw;
     z-index: 1;
 }
@@ -165,7 +165,7 @@ h2 {
 .top-right-row {
     position:absolute;
     left: 3vw;
-    height: 30px;
+    height: 25px;
     border-bottom: 1px solid;
     border-color: lightgrey;
     display: flex;
@@ -173,33 +173,31 @@ h2 {
     z-index: 1;
 }
 
-.col {
-    height: 30px;
-    width: 120px;
-    border-left: 1px solid;
-    border-color: lightgrey;
+.top-right-row .col{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.col {
+    height: 25px;
+    width: 120px;
+    border-left: 1px solid;
+    border-color: lightgrey;
     overflow: hidden;
     outline-color: rgb(121, 91, 231);
 }
 
-.grid .col{
-    display: flex;
-    justify-content: flex-start;
-}
-
 .left-column {
     position: absolute;
-    top: 30px;
+    top: 25px;
     width: 3vw;
     display: flex;
     flex-direction: column;
 }
 
 .row{
-    height: 30px;
+    height: 25px;
     border-bottom: 1px solid;
     border-color: lightgrey;
     display: flex;
@@ -211,7 +209,7 @@ h2 {
 
 .grid {
     position: absolute;
-    top: 30px;
+    top: 25px;
     left: 3vw;
 }
 
