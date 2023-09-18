@@ -17,6 +17,8 @@ let leftBtn = document.querySelector(".left");
 let centerBtn = document.querySelector(".center");
 let rightBtn = document.querySelector(".right");
 
+
+
 /************************** MENU CONTAINER ************************************/
 //COMMON FOR MENU CONTAINER
 function addressCidRid() {
@@ -105,7 +107,6 @@ centerBtn.addEventListener("click", (e) => {
     }
     centerBtn.classList.add("activeBtn");
     cell.style.textAlign = "center";
-
 });
 //RIGHT BUTTON
 rightBtn.addEventListener("click", (e) => {
@@ -127,3 +128,15 @@ allCells.forEach((ele) => {
     })
 })
 allCells[0].click(); // TO SET TO DEFAULT AS "A1" IN ADDRESS BAR
+
+//SHEET CONTAINER
+let addBtnCont = document.querySelector(".add-btn-cont");
+let sheetList = document.querySelector(".sheet-list");
+
+/************************** SHEET CONTAINER ************************************/
+// addBtnCont.addEventListener("click", (e)=>{
+//     let sheet = document.createElement("div");
+//     sheet.setAttribute("class", "sheet");
+//     let idx = document.querySelectorAll(`${idxNumber}`);
+//     sheetList.append(sheet);
+// })
