@@ -95,27 +95,27 @@ underlineBtn.addEventListener("click", (e) => {
 //LEFT BUTTON
 leftBtn.addEventListener("click", (e) => {
     let cell = addressCidRid();
-    for (let i = 0; i < alignContainer.length; i++) {
-        alignContainer[i].classList.remove("activeBtn");
-    }
+    alignContainer.forEach((ele) => {
+        ele.classList.remove("activeBtn");
+    })
     leftBtn.classList.add("activeBtn");
     cell.style.textAlign = "left";
 });
 //CENTER BUTTON
 centerBtn.addEventListener("click", (e) => {
     let cell = addressCidRid();
-    for (let i = 0; i < alignContainer.length; i++) {
-        alignContainer[i].classList.remove("activeBtn");
-    }
+    alignContainer.forEach((ele) => {
+        ele.classList.remove("activeBtn");
+    })
     centerBtn.classList.add("activeBtn");
     cell.style.textAlign = "center";
 });
 //RIGHT BUTTON
 rightBtn.addEventListener("click", (e) => {
     let cell = addressCidRid();
-    for (let i = 0; i < alignContainer.length; i++) {
-        alignContainer[i].classList.remove("activeBtn");
-    }
+    alignContainer.forEach((ele) => {
+        ele.classList.remove("activeBtn");
+    })
     rightBtn.classList.add("activeBtn");
     cell.style.textAlign = "right";
 });
@@ -141,12 +141,10 @@ addBtnCont.addEventListener("click", (e) => {
     newSheet.setAttribute("sheetIdx", idx + 1);
     newSheet.innerText = `Sheet ${idx + 1}`;
     sheetList.append(newSheet);
-});
-
-sheetList.addEventListener("click", (e) => {
-    for (let i = 0; i < sheetList.length; i++) {
-        sheetList.classList.remove("active-sheet");
-    }
-    sheetList.classList.add("active-sheet");
+    //Using ForEach loop for removing and adding activ-sheet class on Sheets. 
+    sheetArr.forEach((e) => {
+        e.classList.remove("active-sheet");   //Here we remove the class active-sheet from the sheet array     
+    })
+    newSheet.classList.add("active-sheet");   //Here we add the active-sheet class in the new sheet whenever we click on add button.
 });
 
