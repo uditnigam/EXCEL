@@ -17,7 +17,9 @@ let leftBtn = document.querySelector(".left");
 let centerBtn = document.querySelector(".center");
 let rightBtn = document.querySelector(".right");
 
-
+//SHEET CONTAINER
+let addBtnCont = document.querySelector(".add-btn-cont");
+let sheetList = document.querySelector(".sheet-list");
 
 /************************** MENU CONTAINER ************************************/
 //COMMON FOR MENU CONTAINER
@@ -29,22 +31,22 @@ function addressCidRid() {
     return cell;
 }
 //FONT STYLE
-fontStyle.addEventListener("change", (e) =>{
+fontStyle.addEventListener("change", (e) => {
     let cell = addressCidRid();
     cell.style.fontFamily = e.target.value;
 });
 //FONT SIZE
-fontSize.addEventListener("change", (e) =>{
+fontSize.addEventListener("change", (e) => {
     let cell = addressCidRid();
     cell.style.fontSize = e.target.value;
 });
 //FONT COLOR
-fontColor.addEventListener("change", (e) =>{
+fontColor.addEventListener("change", (e) => {
     let cell = addressCidRid();
     cell.style.color = e.target.value;
 });
 //BACKGROUND COLOR
-backgroundColor.addEventListener("change", (e) =>{
+backgroundColor.addEventListener("change", (e) => {
     let cell = addressCidRid();
     cell.style.backgroundColor = e.target.value;
 });
@@ -129,14 +131,22 @@ allCells.forEach((ele) => {
 })
 allCells[0].click(); // TO SET TO DEFAULT AS "A1" IN ADDRESS BAR
 
-//SHEET CONTAINER
-let addBtnCont = document.querySelector(".add-btn-cont");
-let sheetList = document.querySelector(".sheet-list");
-
 /************************** SHEET CONTAINER ************************************/
-// addBtnCont.addEventListener("click", (e)=>{
-//     let sheet = document.createElement("div");
-//     sheet.setAttribute("class", "sheet");
-//     let idx = document.querySelectorAll(`${idxNumber}`);
-//     sheetList.append(sheet);
-// })
+addBtnCont.addEventListener("click", (e) => {
+    let newSheet = document.createElement("div");
+    newSheet.setAttribute("class", "sheet");
+    let sheetArr = document.querySelectorAll(".sheet");
+    let lastSheet = sheetArr[sheetArr.length - 1];
+    let idx = Number(lastSheet.getAttribute(`sheetIdx`));
+    newSheet.setAttribute("sheetIdx", idx + 1);
+    newSheet.innerText = `Sheet ${idx + 1}`;
+    sheetList.append(newSheet);
+});
+
+sheetList.addEventListener("click", (e) => {
+    for (let i = 0; i < sheetList.length; i++) {
+        sheetList.classList.remove("active-sheet");
+    }
+    sheetList.classList.add("active-sheet");
+});
+
