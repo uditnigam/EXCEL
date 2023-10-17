@@ -20,6 +20,7 @@ let rightBtn = document.querySelector(".right");
 //SHEET CONTAINER
 let addBtnCont = document.querySelector(".add-btn-cont");
 let sheetList = document.querySelector(".sheet-list");
+let sheetDb = sheetData;
 
 /************************** MENU CONTAINER ************************************/
 //COMMON FOR MENU CONTAINER

@@ -24,9 +24,25 @@ for (let i = 0; i < 100; i++) {
     for (let j = 0; j < 26; j++) {
         str += `<div class="col" rid= ${i} cid = ${j} contentEditable="true"></div>`
     }
-    str +=`</div>`
+    str += `</div>`
 };
 grid.innerHTML = str;
 
-
-
+for (let i = 0; i < 100; i++) {
+    let sheetDb = [];
+    for (let j = 0; j < 26; j++) {
+        let cell = {
+            fontFamily: 'Arial',
+            fontSize: 10,
+            fontColor: 'black',
+            backgroundColor: 'white',
+            bold: false,
+            italic: false,
+            underline: false,
+            align: 'left',
+            value: '',
+        };
+        sheetDb.push(cell);
+    }
+    console.log(sheetDb)
+};
