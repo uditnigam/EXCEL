@@ -20,7 +20,7 @@ let rightBtn = document.querySelector(".right");
 //SHEET CONTAINER
 let addBtnCont = document.querySelector(".add-btn-cont");
 let sheetList = document.querySelector(".sheet-list");
-let sheetDb = sheetData;
+let sheetData = sheetDb;
 
 /************************** MENU CONTAINER ************************************/
 //COMMON FOR MENU CONTAINER
@@ -34,34 +34,55 @@ function addressCidRid() {
 //FONT STYLE
 fontStyle.addEventListener("change", (e) => {
     let cell = addressCidRid();
+    let cid = cell.getAttribute("cid");
+    let rid = cell.getAttribute("rid");
+    let cellObject = sheetDb[rid][cid];
     cell.style.fontFamily = e.target.value;
+    cellObject.fontFamily = e.target.value;
 });
 //FONT SIZE
 fontSize.addEventListener("change", (e) => {
     let cell = addressCidRid();
+    let cid = cell.getAttribute("cid");
+    let rid = cell.getAttribute("rid");
+    let cellObject = sheetDb[rid][cid];
     cell.style.fontSize = e.target.value;
+    cellObject.fontSize = e.target.value;
 });
 //FONT COLOR
 fontColor.addEventListener("change", (e) => {
     let cell = addressCidRid();
+    let cid = cell.getAttribute("cid");
+    let rid = cell.getAttribute("rid");
+    let cellObject = sheetDb[rid][cid];
     cell.style.color = e.target.value;
+    cellObject.fontColor = e.target.value;
 });
 //BACKGROUND COLOR
 backgroundColor.addEventListener("change", (e) => {
     let cell = addressCidRid();
+    let cid = cell.getAttribute("cid");
+    let rid = cell.getAttribute("rid");
+    let cellObject = sheetDb[rid][cid];
     cell.style.backgroundColor = e.target.value;
+    cellObject.backgroundColor = e.target.value;
 });
 //BOLD BUTTON
 boldBtn.addEventListener("click", (e) => {
     let activeBtn = boldBtn.classList.contains("activeBtn");
     let cell = addressCidRid();
+    let cid = cell.getAttribute("cid");
+    let rid = cell.getAttribute("rid");
+    let cellObject = sheetDb[rid][cid];
     if (activeBtn) {
         // remove the class
         boldBtn.classList.remove("activeBtn");
+        cellObject.bold = false;
         cell.style.fontWeight = "normal";
     } else {
         // add the class
         boldBtn.classList.add("activeBtn");
+        cellObject.bold = true;
         cell.style.fontWeight = "bold";
     }
 });
@@ -69,13 +90,18 @@ boldBtn.addEventListener("click", (e) => {
 italicBtn.addEventListener("click", (e) => {
     let activeBtn = italicBtn.classList.contains("activeBtn");
     let cell = addressCidRid();
+    let cid = cell.getAttribute("cid");
+    let rid = cell.getAttribute("rid");
+    let cellObject = sheetDb[rid][cid];
     if (activeBtn) {
         // remove the class
         italicBtn.classList.remove("activeBtn");
+        cellObject.italic = false;
         cell.style.fontStyle = "normal";
     } else {
         // add the class
         italicBtn.classList.add("activeBtn");
+        cellObject.italic = true;
         cell.style.fontStyle = "italic";
     }
 });
@@ -83,41 +109,58 @@ italicBtn.addEventListener("click", (e) => {
 underlineBtn.addEventListener("click", (e) => {
     let activeBtn = underlineBtn.classList.contains("activeBtn");
     let cell = addressCidRid();
+    let cid = cell.getAttribute("cid");
+    let rid = cell.getAttribute("rid");
+    let cellObject = sheetDb[rid][cid];
     if (activeBtn) {
         // remove the class
         underlineBtn.classList.remove("activeBtn");
+        cellObject.underline = false;
         cell.style.textDecoration = "none";
     } else {
         // add the class
         underlineBtn.classList.add("activeBtn");
+        cellObject.underline = true;
         cell.style.textDecoration = "underline";
     }
 });
 //LEFT BUTTON
 leftBtn.addEventListener("click", (e) => {
     let cell = addressCidRid();
+    let cid = cell.getAttribute("cid");
+    let rid = cell.getAttribute("rid");
+    let cellObject = sheetDb[rid][cid];
     alignContainer.forEach((ele) => {
         ele.classList.remove("activeBtn");
     })
     leftBtn.classList.add("activeBtn");
+    cellObject.align = 'left';
     cell.style.textAlign = "left";
 });
 //CENTER BUTTON
 centerBtn.addEventListener("click", (e) => {
     let cell = addressCidRid();
+    let cid = cell.getAttribute("cid");
+    let rid = cell.getAttribute("rid");
+    let cellObject = sheetDb[rid][cid];
     alignContainer.forEach((ele) => {
         ele.classList.remove("activeBtn");
     })
     centerBtn.classList.add("activeBtn");
+    cellObject.align = 'center';
     cell.style.textAlign = "center";
 });
 //RIGHT BUTTON
 rightBtn.addEventListener("click", (e) => {
     let cell = addressCidRid();
+    let cid = cell.getAttribute("cid");
+    let rid = cell.getAttribute("rid");
+    let cellObject = sheetDb[rid][cid];
     alignContainer.forEach((ele) => {
         ele.classList.remove("activeBtn");
     })
     rightBtn.classList.add("activeBtn");
+    cellObject.align = 'right';
     cell.style.textAlign = "right";
 });
 
@@ -125,9 +168,46 @@ rightBtn.addEventListener("click", (e) => {
 //ADDRESS BAR
 allCells.forEach((ele) => {
     ele.addEventListener("click", (e) => {
-        let cid = String.fromCharCode(Number(ele.getAttribute("cid")) + 65); //FIRST WE CONVERT STRING "CID" TO NUMBER THEN ADD 65 IN THE CID TO GET THE VALUE 65. AFTER THAT WE USE ACSII CODE FUNCTION TO CONVERT THE VALUE INTO ALPHABET.
-        let rid = Number(ele.getAttribute("rid")) + 1; // FIRST WE CONVERT STRING "RID" TO NUMBER USING NUMBER FUNCTION AFTER THAT WE ADD "1" TO START PRINTING INDEX NUMBER FROM 1.
-        addressBar.value = cid + rid; // TO ADD THE COLUMN NO. AND ROW NO. AND PRINT THE VALUE OF IT IN THE ADDRESS BAR 
+        let cid = ele.getAttribute("cid");
+        let rid = ele.getAttribute("rid");
+        let columnId = String.fromCharCode(Number(cid) + 65); //FIRST WE CONVERT STRING "CID" TO NUMBER THEN ADD 65 IN THE CID TO GET THE VALUE 65. AFTER THAT WE USE ACSII CODE FUNCTION TO CONVERT THE VALUE INTO ALPHABET.
+        let rowId = Number(rid) + 1; // FIRST WE CONVERT STRING "RID" TO NUMBER USING NUMBER FUNCTION AFTER THAT WE ADD "1" TO START PRINTING INDEX NUMBER FROM 1.
+        addressBar.value = columnId + rowId; // TO ADD THE COLUMN NO. AND ROW NO. AND PRINT THE VALUE OF IT IN THE ADDRESS BAR 
+
+        /*********************Sheet Database***************************/
+        let cellObject = sheetDb[rid][cid];
+        console.log("cellObject: ", cellObject)
+
+        if (cellObject.bold) {
+            boldBtn.classList.add("activeBtn");
+        } else {
+            boldBtn.classList.remove("activeBtn");
+        }
+        if (cellObject.italic) {
+            italicBtn.classList.add("activeBtn");
+        } else {
+            italicBtn.classList.remove("activeBtn");
+        }
+        if (cellObject.underline) {
+            underlineBtn.classList.add("activeBtn");
+        } else {
+            underlineBtn.classList.remove("activeBtn");
+        }
+        if (cellObject.align === 'left') {
+            leftBtn.classList.add("activeBtn");
+        } else {
+            leftBtn.classList.remove("activeBtn");
+        }
+        if (cellObject.align === 'center') {
+            centerBtn.classList.add("activeBtn");
+        } else {
+            centerBtn.classList.remove("activeBtn");
+        }
+        if (cellObject.align === 'right') {
+            rightBtn.classList.add("activeBtn");
+        } else {
+            rightBtn.classList.remove("activeBtn");
+        }
     })
 })
 allCells[0].click(); // TO SET TO DEFAULT AS "A1" IN ADDRESS BAR

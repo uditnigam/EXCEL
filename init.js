@@ -27,9 +27,9 @@ for (let i = 0; i < 100; i++) {
     str += `</div>`
 };
 grid.innerHTML = str;
-
+let sheetDb = [];
 for (let i = 0; i < 100; i++) {
-    let sheetDb = [];
+    let row = [];
     for (let j = 0; j < 26; j++) {
         let cell = {
             fontFamily: 'Arial',
@@ -42,7 +42,7 @@ for (let i = 0; i < 100; i++) {
             align: 'left',
             value: '',
         };
-        sheetDb.push(cell);
+        row.push(cell);
     }
-    console.log(sheetDb)
+    sheetDb.push(row);
 };
