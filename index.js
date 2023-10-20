@@ -178,38 +178,43 @@ allCells.forEach((ele) => {
         let cellObject = sheetDb[rid][cid];
         console.log("cellObject: ", cellObject)
 
+        fontStyle.value = cellObject.fontFamily;
+        fontSize.value = cellObject.fontSize;
+        fontColor.value = cellObject.fontColor;
+        backgroundColor.value = cellObject.backgroundColor;
         if (cellObject.bold) {
             boldBtn.classList.add("activeBtn");
         } else {
             boldBtn.classList.remove("activeBtn");
-        }
+        };
         if (cellObject.italic) {
             italicBtn.classList.add("activeBtn");
         } else {
             italicBtn.classList.remove("activeBtn");
-        }
+        };
         if (cellObject.underline) {
             underlineBtn.classList.add("activeBtn");
         } else {
             underlineBtn.classList.remove("activeBtn");
-        }
+        };
+        alignContainer.forEach((e) => {
+            e.classList.remove("activeBtn");
+        })
         if (cellObject.align === 'left') {
             leftBtn.classList.add("activeBtn");
-        } else {
-            leftBtn.classList.remove("activeBtn");
-        }
-        if (cellObject.align === 'center') {
+        } else if (cellObject.align === 'center') {
             centerBtn.classList.add("activeBtn");
-        } else {
-            centerBtn.classList.remove("activeBtn");
-        }
-        if (cellObject.align === 'right') {
+        } else if (cellObject.align === 'right') {
             rightBtn.classList.add("activeBtn");
-        } else {
-            rightBtn.classList.remove("activeBtn");
-        }
-    })
-})
+        };
+    });
+    ele.addEventListener("blur", (e) => {
+        let cid = ele.getAttribute("cid");
+        let rid = ele.getAttribute("rid");
+        let cellObject = sheetDb[rid][cid];
+        cellObject.value = ele.innerText;
+    });
+});
 allCells[0].click(); // TO SET TO DEFAULT AS "A1" IN ADDRESS BAR
 
 /************************** SHEET CONTAINER ************************************/

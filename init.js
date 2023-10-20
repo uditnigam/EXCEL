@@ -33,9 +33,9 @@ for (let i = 0; i < 100; i++) {
     for (let j = 0; j < 26; j++) {
         let cell = {
             fontFamily: 'Arial',
-            fontSize: 10,
-            fontColor: 'black',
-            backgroundColor: 'white',
+            fontSize: '14px',
+            fontColor: '#000000',
+            backgroundColor: '#FFFFFF',
             bold: false,
             italic: false,
             underline: false,
