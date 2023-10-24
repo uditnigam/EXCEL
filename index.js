@@ -20,7 +20,7 @@ let rightBtn = document.querySelector(".right");
 //SHEET CONTAINER
 let addBtnCont = document.querySelector(".add-btn-cont");
 let sheetList = document.querySelector(".sheet-list");
-let sheetData = sheetDb;
+let sheetDb = workSheet[0];
 
 /************************** MENU CONTAINER ************************************/
 //COMMON FOR MENU CONTAINER
@@ -232,5 +232,6 @@ addBtnCont.addEventListener("click", (e) => {
         e.classList.remove("active-sheet");   //Here we remove the class active-sheet from the sheet array     
     })
     newSheet.classList.add("active-sheet");   //Here we add the active-sheet class in the new sheet whenever we click on add button.
+    sheetUi();
 });
 

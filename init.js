@@ -27,22 +27,28 @@ for (let i = 0; i < 100; i++) {
     str += `</div>`
 };
 grid.innerHTML = str;
-let sheetDb = [];
-for (let i = 0; i < 100; i++) {
-    let row = [];
-    for (let j = 0; j < 26; j++) {
-        let cell = {
-            fontFamily: 'Arial',
-            fontSize: '14px',
-            fontColor: '#000000',
-            backgroundColor: '#FFFFFF',
-            bold: false,
-            italic: false,
-            underline: false,
-            align: 'left',
-            value: '',
-        };
-        row.push(cell);
+let workSheet = [];
+function sheetUi() {
+    let sheetDb = [];
+    for (let i = 0; i < 100; i++) {
+        let row = [];
+        for (let j = 0; j < 26; j++) {
+            let cell = {
+                fontFamily: 'Arial',
+                fontSize: '14px',
+                fontColor: '#000000',
+                backgroundColor: '#FFFFFF',
+                bold: false,
+                italic: false,
+                underline: false,
+                align: 'left',
+                value: '',
+            };
+            row.push(cell);
+        }
+        sheetDb.push(row);
     }
-    sheetDb.push(row);
+    workSheet.push(sheetDb);
 };
+sheetUi();
+console.log("workSheet", workSheet)
