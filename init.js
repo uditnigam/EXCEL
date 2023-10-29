@@ -51,4 +51,3 @@ function sheetUi() {
     workSheet.push(sheetDb);
 };
 sheetUi();
-console.log("workSheet", workSheet)

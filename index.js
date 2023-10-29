@@ -20,6 +20,8 @@ let rightBtn = document.querySelector(".right");
 //SHEET CONTAINER
 let addBtnCont = document.querySelector(".add-btn-cont");
 let sheetList = document.querySelector(".sheet-list");
+let firstSheet = document.querySelector(".sheet");
+
 let sheetDb = workSheet[0];
 
 /************************** MENU CONTAINER ************************************/
@@ -176,7 +178,7 @@ allCells.forEach((ele) => {
 
         /*********************Sheet Database***************************/
         let cellObject = sheetDb[rid][cid];
-        console.log("cellObject: ", cellObject)
+        // console.log("cellObject: ", cellObject)
 
         fontStyle.value = cellObject.fontFamily;
         fontSize.value = cellObject.fontSize;
@@ -218,6 +220,7 @@ allCells.forEach((ele) => {
 allCells[0].click(); // TO SET TO DEFAULT AS "A1" IN ADDRESS BAR
 
 /************************** SHEET CONTAINER ************************************/
+firstSheet.addEventListener("click", handleActiveSheet);
 addBtnCont.addEventListener("click", (e) => {
     let newSheet = document.createElement("div");
     newSheet.setAttribute("class", "sheet");
@@ -233,5 +236,44 @@ addBtnCont.addEventListener("click", (e) => {
     })
     newSheet.classList.add("active-sheet");   //Here we add the active-sheet class in the new sheet whenever we click on add button.
     sheetUi();
+    sheetDb = workSheet[idx - 1];
+    initUi();
+    newSheet.addEventListener("click", handleActiveSheet);
 });
+function handleActiveSheet(e) {
 
+    let sheet = e.currentTarget;
+    let idx = Number(sheet.getAttribute(`sheetIdx`));
+    let sheetArr = document.querySelectorAll(".sheet");
+
+    sheetArr.forEach((e) => {
+        e.classList.remove("active-sheet");   //Here we remove the class active-sheet from the sheet array     
+    })
+    sheet.classList.add("active-sheet");
+    setUi(sheetDb);
+};
+function initUi() {
+    allCells.forEach((cell) => {
+        cell.style.fontFamily = 'Arial';
+        cell.style.fontSize = '14px';
+        cell.style.color = '#000000';
+        cell.style.backgroundColor = '#FFFFFF';
+        cell.style.fontWeight = false;
+        cell.style.fontStyle = false;
+        cell.style.textDecoration = false;
+        cell.style.textAlign = 'left';
+        cell.innerText = '';
+    })
+};
+function setUi(sheetDb) {
+    for (let i = 0; i < sheetDb.length; i++) {
+        for (let j = 0; j < sheetDb[i].length; j++) {
+            let cell = document.querySelector(`[cid="${i}"][rid="${j}"]`);
+            
+            cell.style.fontWeight = bold == true ? "bold" : "normal";
+            cell.style.fontStyle = italic == true ? "italic" : "normal";
+            cell.style.textDecoration = underline == true ? "underline" : "none";
+            cell.innerText = value;
+        }
+    }
+}
