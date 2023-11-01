@@ -43,6 +43,8 @@ function sheetUi() {
                 underline: false,
                 align: 'left',
                 value: '',
+                formula: '',
+                children: [],
             };
             row.push(cell);
         }

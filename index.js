@@ -29,7 +29,7 @@ let sheetDb = workSheet[0];
 function addressCidRid() {
     let address = addressBar.value;
     let cid = address.charCodeAt(0) - 65;
-    let rid = address.charAt(1) - 1;
+    let rid = address.slice(1) - 1;
     let cell = document.querySelector(`[cid="${cid}"][rid="${rid}"]`);
     return cell;
 }
@@ -236,21 +236,23 @@ addBtnCont.addEventListener("click", (e) => {
     })
     newSheet.classList.add("active-sheet");   //Here we add the active-sheet class in the new sheet whenever we click on add button.
     sheetUi();
-    sheetDb = workSheet[idx - 1];
     initUi();
+    sheetDb = workSheet[idx - 1];
+    allCells[0].click();
     newSheet.addEventListener("click", handleActiveSheet);
 });
-function handleActiveSheet(e) {
 
+function handleActiveSheet(e) {
     let sheet = e.currentTarget;
     let idx = Number(sheet.getAttribute(`sheetIdx`));
     let sheetArr = document.querySelectorAll(".sheet");
-
     sheetArr.forEach((e) => {
         e.classList.remove("active-sheet");   //Here we remove the class active-sheet from the sheet array     
     })
     sheet.classList.add("active-sheet");
     setUi(sheetDb);
+    sheetDb = workSheet[idx - 1];
+    allCells[0].click();
 };
 function initUi() {
     allCells.forEach((cell) => {
@@ -263,17 +265,21 @@ function initUi() {
         cell.style.textDecoration = false;
         cell.style.textAlign = 'left';
         cell.innerText = '';
-    })
+    });
 };
 function setUi(sheetDb) {
     for (let i = 0; i < sheetDb.length; i++) {
         for (let j = 0; j < sheetDb[i].length; j++) {
-            let cell = document.querySelector(`[cid="${i}"][rid="${j}"]`);
-            
-            cell.style.fontWeight = bold == true ? "bold" : "normal";
-            cell.style.fontStyle = italic == true ? "italic" : "normal";
-            cell.style.textDecoration = underline == true ? "underline" : "none";
-            cell.innerText = value;
+            let cell = document.querySelector(`[rid="${i}"][cid="${j}"]`);
+            cell.style.fontFamily = sheetDb[i][j].fontFamily;
+            cell.style.fontSize = sheetDb[i][j].fontSize;
+            cell.style.color = sheetDb[i][j].fontColor;
+            cell.style.backgroundColor = sheetDb[i][j].backgroundColor;
+            cell.style.fontWeight = sheetDb[i][j].bold == true ? "bold" : "normal";
+            cell.style.fontStyle = sheetDb[i][j].italic == true ? "italic" : "normal";
+            cell.style.textDecoration = sheetDb[i][j].underline == true ? "underline" : "none";
+            cell.style.textAlign = sheetDb[i][j].align;
+            cell.innerText = sheetDb[i][j].value;
         }
     }
 }
