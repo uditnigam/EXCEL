@@ -17,6 +17,9 @@ let leftBtn = document.querySelector(".left");
 let centerBtn = document.querySelector(".center");
 let rightBtn = document.querySelector(".right");
 
+//FORMULA CONTAINER
+let formulaCont = document.querySelector(".formula-cont");
+
 //SHEET CONTAINER
 let addBtnCont = document.querySelector(".add-btn-cont");
 let sheetList = document.querySelector(".sheet-list");
@@ -179,6 +182,8 @@ allCells.forEach((ele) => {
         /*********************Sheet Database***************************/
         let cellObject = sheetDb[rid][cid];
         // console.log("cellObject: ", cellObject)
+        // console.log(rid)
+        // console.log(cid)
 
         fontStyle.value = cellObject.fontFamily;
         fontSize.value = cellObject.fontSize;
@@ -218,6 +223,18 @@ allCells.forEach((ele) => {
     });
 });
 allCells[0].click(); // TO SET TO DEFAULT AS "A1" IN ADDRESS BAR
+/************************** FORMULA CONTAINER ************************************/
+formulaCont.addEventListener("keydown", (e) => {
+    // console.log(e)
+    let cell = addressCidRid();
+    let cid = cell.getAttribute("cid");
+    let rid = cell.getAttribute("rid");
+    if (e.key === "Enter") {
+        let formula = formulaCont.value;
+        let newFormula = formula.split(" ");
+        console.log(newFormula)
+    }
+})
 
 /************************** SHEET CONTAINER ************************************/
 firstSheet.addEventListener("click", handleActiveSheet);
@@ -226,32 +243,35 @@ addBtnCont.addEventListener("click", (e) => {
     newSheet.setAttribute("class", "sheet");
     let sheetArr = document.querySelectorAll(".sheet");
     let lastSheet = sheetArr[sheetArr.length - 1];
-    let idx = Number(lastSheet.getAttribute(`sheetIdx`));
-    newSheet.setAttribute("sheetIdx", idx + 1);
-    newSheet.innerText = `Sheet ${idx + 1}`;
+    let idx = Number(lastSheet.getAttribute(`sheetIdx`)) + 1;
+    console.log(idx)
+    newSheet.setAttribute("sheetIdx", idx);
+    newSheet.innerText = `Sheet ${idx}`;
     sheetList.append(newSheet);
     //Using ForEach loop for removing and adding activ-sheet class on Sheets. 
     sheetArr.forEach((e) => {
         e.classList.remove("active-sheet");   //Here we remove the class active-sheet from the sheet array     
     })
     newSheet.classList.add("active-sheet");   //Here we add the active-sheet class in the new sheet whenever we click on add button.
-    sheetUi();
     initUi();
+    sheetUi();
     sheetDb = workSheet[idx - 1];
-    allCells[0].click();
     newSheet.addEventListener("click", handleActiveSheet);
+    allCells[0].click();
 });
 
 function handleActiveSheet(e) {
     let sheet = e.currentTarget;
     let idx = Number(sheet.getAttribute(`sheetIdx`));
+    console.log(idx)
     let sheetArr = document.querySelectorAll(".sheet");
     sheetArr.forEach((e) => {
         e.classList.remove("active-sheet");   //Here we remove the class active-sheet from the sheet array     
     })
     sheet.classList.add("active-sheet");
-    setUi(sheetDb);
     sheetDb = workSheet[idx - 1];
+    // console.log(sheetDb)
+    setUi(sheetDb);
     allCells[0].click();
 };
 function initUi() {
