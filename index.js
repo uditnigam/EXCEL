@@ -220,21 +220,56 @@ allCells.forEach((ele) => {
         let rid = ele.getAttribute("rid");
         let cellObject = sheetDb[rid][cid];
         cellObject.value = ele.innerText;
+        // console.log(cellObject)
     });
 });
 allCells[0].click(); // TO SET TO DEFAULT AS "A1" IN ADDRESS BAR
 /************************** FORMULA CONTAINER ************************************/
 formulaCont.addEventListener("keydown", (e) => {
-    // console.log(e)
-    let cell = addressCidRid();
-    let cid = cell.getAttribute("cid");
-    let rid = cell.getAttribute("rid");
     if (e.key === "Enter") {
+        let cell = addressCidRid();
+        let cid = cell.getAttribute("cid");
+        let rid = cell.getAttribute("rid");
+        let cellObject = sheetDb[rid][cid];
         let formula = formulaCont.value;
-        let newFormula = formula.split(" ");
-        console.log(newFormula)
+        let evaluatedValue = evaluateFormula(formula);
+        console.log("evaluatedValue", evaluatedValue)
+        setUiByFormula(evaluatedValue, rid, cid);
+        setFormulaInDatabase(cellObject, evaluatedValue, formula);
     }
 })
+
+function evaluateFormula(formula) {
+   
+    let formulaTokens = formula.split(" ");
+    // console.log("formulaTokens", formulaTokens)
+    for (let i = 0; i < formulaTokens.length; i++) {
+        let firstCharacter = formulaTokens[i].charCodeAt(0);
+        // console.log("firstCharacter", firstCharacter)
+        if (firstCharacter >= 65 && firstCharacter <= 90) {
+            let cid = formulaTokens[i].charCodeAt(0) - 65;
+            let rid = formulaTokens[i].slice(1) - 1;
+            let cellObject = sheetDb[rid][cid];
+            console.log("cellObject", cellObject)
+            console.log("firstCharacter", firstCharacter)
+            let { value } = cellObject;
+            console.log("value", value)
+            formula = formula.replace(formulaTokens[i], value);
+            console.log(formula)
+        }
+    }
+    let answer = eval(formula);
+    return answer;
+}
+
+function setUiByFormula(evaluatedValue, rid, cid) {
+    document.querySelector(`[rid="${rid}"][cid="${cid}"]`).innerText = evaluatedValue;
+}
+
+function setFormulaInDatabase(cellObject, evaluatedValue, formula){
+    cellObject.formula = formula;
+    cellObject.value = evaluatedValue;
+}
 
 /************************** SHEET CONTAINER ************************************/
 firstSheet.addEventListener("click", handleActiveSheet);
