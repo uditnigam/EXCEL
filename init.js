@@ -27,13 +27,14 @@ for (let i = 0; i < 100; i++) {
     str += `</div>`
 };
 grid.innerHTML = str;
-let workSheet = [];
+//Fuction to create sheet database where we store all the data of the excel sheet
+let workSheet = []; //created a array of workSheet to store all the sheets in it
 function sheetUi() {
-    let sheetDb = [];
-    for (let i = 0; i < 100; i++) {
-        let row = [];
-        for (let j = 0; j < 26; j++) {
-            let cell = {
+    let sheetDb = []; // created a array of sheetDb to store all the data of sheet in it.
+    for (let i = 0; i < 100; i++) { //we are using for loop to run for 100 rows
+        let row = []; // here we create row array to store the cells in it.
+        for (let j = 0; j < 26; j++) { //we are using for loop to run for 26 columns
+            let cell = { //here we create a variable of cell object and add all the properties which are using in excel sheets
                 fontFamily: 'Arial',
                 fontSize: '14px',
                 fontColor: '#000000',
@@ -46,10 +47,10 @@ function sheetUi() {
                 formula: '',
                 children: [],
             };
-            row.push(cell);
+            row.push(cell); // here we push the cell data in the array row.
         }
-        sheetDb.push(row);
+        sheetDb.push(row); //here we push row in the array sheetDb
     }
-    workSheet.push(sheetDb);
+    workSheet.push(sheetDb); // here we push sheetDb in the array workSheet
 };
-sheetUi();
+sheetUi(); // now call the function sheetUi() to run for the first sheet whenever excel was open.
